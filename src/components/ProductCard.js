@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { calculateMoney } from '../redux/moneySlice';
+import { buyProduct, sellProduct } from '../redux/moneySlice';
 
 function ProductCard({ item }) {
-	const dispatch = useDispatch() 
-    const [amount, setAmount] = useState(0)
-	const [total, setTotal] = useState(0)
+    const dispatch = useDispatch();
+    const [amount, setAmount] = useState(0);
+    const [total, setTotal] = useState(0);
 
-	// useEffect(()=> {
-	// 	dispatch(calculateMoney(amount.))
-	// }, [])
+    const buyItem = (price) => {
+        setAmount(Number(amount) + 1);
+        dispatch(buyProduct(price))
+    };
 
-	const calculation = ({price}) => {
-		
-	}
+    const sellItem = (price) => {
+        setAmount(Number(amount) - 1)
+        dispatch(sellProduct(price))
+    }
 
-
+    const buyCountedItem = (amount, price) => {
+        dispatch(buyProduct(amount * price))
+    }
 
     return (
         <div className="product-card">
@@ -25,7 +29,7 @@ function ProductCard({ item }) {
             <div className="button-container">
                 <button
                     className="btn"
-                    onClick={() => setAmount(Number(amount) - 1)}
+                    onClick={() => sellItem(item.price)}
                     disabled={amount === 0}
                 >
                     Sell
@@ -33,9 +37,12 @@ function ProductCard({ item }) {
                 <input
                     type="text"
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={(e) => buyCountedItem(e.target.value, item.price)}
                 />
-                <button className="btn" onClick={() => setAmount(Number(amount) + 1)}>
+                <button
+                    className="btn"
+                    onClick={() => buyItem(item.price)}
+                >
                     Buy
                 </button>
             </div>
