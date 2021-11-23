@@ -6,7 +6,7 @@
 
 .header{
   background: #fff;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto 20px;
   padding: 30px 0;
 }
@@ -19,7 +19,7 @@
 }
 
 .money-container{
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   color: #fff;
   background: linear-gradient(180deg,#2ecc71,#1abc9c);
@@ -32,7 +32,7 @@
 }
 
 .product-container{
-  max-width: 1200px;
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -42,7 +42,7 @@
 
 .product-card{
   background: #fff;
-  width: 380px;
+  width: 320px;
   height: 310px;
   margin: 10px 0;
 }
@@ -71,7 +71,7 @@
 }
 
 .btn{
-  padding: 10px 35px;
+  padding: 10px 25px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -79,12 +79,12 @@
   font-size: 1.2em;
 }
 
-.btn:nth-child(1){
+.sell{
   background: #F53B6E;
   color: #fff;
 }
 
-.btn:nth-last-child(1){
+.buy{
   background: linear-gradient(180deg,#2ecc71,#1abc9c);
   color: #fff;
 }
@@ -100,4 +100,11 @@
   width: 30%;
   border: 1px solid #999;
   border-radius: 5px;
+}
+
+
+@media screen and (max-width: 680px) {
+  .product-card{
+    width: 100%;
+  }
 }
