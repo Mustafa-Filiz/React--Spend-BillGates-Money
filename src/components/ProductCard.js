@@ -7,9 +7,6 @@ function ProductCard({ item }) {
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(0);
     const money = useSelector((state) => state.money.amount);
-    const totalMoney = money
-
-    console.log(totalMoney)
 
     const buyItem = (price) => {
         setAmount(Number(amount) + 1);
@@ -46,7 +43,7 @@ function ProductCard({ item }) {
                 </button>
                 <input
                     type="text"
-                    value={amount > (money / item.price) ? Math.floor(totalMoney / item.price) : amount}
+                    value={amount > (money / item.price) ? Math.floor(money / item.price) : amount}
                     onChange={(e) =>
                         buyAndSellItem(Number(e.target.value), item.price)
                     }
