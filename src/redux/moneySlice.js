@@ -10,7 +10,7 @@ export const moneySlice = createSlice({
             state.amount = state.amount - action.payload;
         },
         sellProduct: (state, action) => {
-            state.amount = state.amount + action.payload
+            state.amount = state.amount + action.payload;
         },
     },
 });
