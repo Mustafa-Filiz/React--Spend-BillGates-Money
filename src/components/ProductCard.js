@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { buyProduct, sellProduct } from '../redux/moneySlice';
 
 function ProductCard({ item }) {
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(0);
-    const [total, setTotal] = useState(0);
+    const money = useSelector((state) => state.money.amount);
+    const totalMoney = money
+
+    console.log(totalMoney)
 
     const buyItem = (price) => {
         setAmount(Number(amount) + 1);
-        dispatch(buyProduct(price))
+        dispatch(buyProduct(price));
     };
 
     const sellItem = (price) => {
-        setAmount(Number(amount) - 1)
-        dispatch(sellProduct(price))
-    }
+        setAmount(Number(amount) - 1);
+        dispatch(sellProduct(price));
+    };
 
-    const buyCountedItem = (amount, price) => {
-        dispatch(buyProduct(amount * price))
-    }
+    const buyAndSellItem = (value, price) => {
+        if (amount > value) {
+            dispatch(sellProduct((amount - value) * price));
+        }
+        if (amount < value) {
+            dispatch(buyProduct((value - amount) * price));
+        }
+        setAmount(value);
+    };
 
     return (
         <div className="product-card">
@@ -28,7 +38,7 @@ function ProductCard({ item }) {
             <p>${item.price}</p>
             <div className="button-container">
                 <button
-                    className="btn"
+                    className={amount === 0 ? "btn" : "btn sell"}
                     onClick={() => sellItem(item.price)}
                     disabled={amount === 0}
                 >
@@ -36,12 +46,15 @@ function ProductCard({ item }) {
                 </button>
                 <input
                     type="text"
-                    value={amount}
-                    onChange={(e) => buyCountedItem(e.target.value, item.price)}
+                    value={amount > (money / item.price) ? Math.floor(totalMoney / item.price) : amount}
+                    onChange={(e) =>
+                        buyAndSellItem(Number(e.target.value), item.price)
+                    }
                 />
                 <button
-                    className="btn"
+                    className={item.price > money ? "btn" : "btn buy"}
                     onClick={() => buyItem(item.price)}
+                    disabled={item.price > money}
                 >
                     Buy
                 </button>
