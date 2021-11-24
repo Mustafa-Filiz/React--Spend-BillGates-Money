@@ -8,6 +8,9 @@ export const moneySlice = createSlice({
     reducers: {
         buyProduct: (state, action) => {
             state.amount = state.amount - action.payload;
+            if(state.amount < 0){
+                alert("Bill Gates can't be in debt. Sell something...")
+            }
         },
         sellProduct: (state, action) => {
             state.amount = state.amount + action.payload;
