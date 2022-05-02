@@ -4,34 +4,34 @@
   padding: 20px;
 }
 
-.header{
+.header {
   background: #fff;
   max-width: 1000px;
   margin: 0 auto 20px;
   padding: 30px 0;
 }
 
-.header img{
+.header img {
   width: 125px;
   height: 125px;
   border-radius: 50%;
   margin: 20px 0;
 }
 
-.money-container{
+.money-container {
   max-width: 1000px;
   margin: auto;
   color: #fff;
-  background: linear-gradient(180deg,#2ecc71,#1abc9c);
+  background: linear-gradient(180deg, #2ecc71, #1abc9c);
   padding: 20px 0;
   font-size: 2.5em;
   font-weight: 600;
   position: sticky;
-  top:0;
+  top: 0;
   z-index: 5;
 }
 
-.product-container{
+.product-container {
   max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
@@ -40,20 +40,20 @@
   margin: auto;
 }
 
-.product-card{
+.product-card {
   background: #fff;
   width: 320px;
   height: 310px;
   margin: 10px 0;
 }
 
-.product-card img{
+.product-card img {
   max-width: 100%;
   height: 120px;
   margin: 15px 0;
 }
 
-.product-card h5{
+.product-card h5 {
   font-size: 1.6em;
 }
 
@@ -62,7 +62,7 @@
   font-size: 1.8em;
 }
 
-.button-container{
+.button-container {
   width: 90%;
   display: flex;
   justify-content: space-between;
@@ -70,7 +70,7 @@
   margin: 20px auto;
 }
 
-.btn{
+.btn {
   padding: 10px 25px;
   cursor: pointer;
   border: none;
@@ -79,21 +79,21 @@
   font-size: 1.2em;
 }
 
-.sell{
-  background: #F53B6E;
+.sell {
+  background: #f53b6e;
   color: #fff;
 }
 
-.buy{
-  background: linear-gradient(180deg,#2ecc71,#1abc9c);
+.buy {
+  background: linear-gradient(180deg, #2ecc71, #1abc9c);
   color: #fff;
 }
 
-.btn:hover{
+.btn:hover {
   opacity: 0.7;
 }
 
-.button-container input{
+.button-container input {
   padding: 7px 0;
   font-size: 1.3em;
   text-align: center;
@@ -101,10 +101,33 @@
   border: 1px solid #999;
   border-radius: 5px;
 }
-
+.receipt {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+.receiptItem {
+  display: flex;
+}
+.receiptItem div {
+  width: 120px;
+  margin: 5px;
+}
+.dolar {
+  color: #22c28b;
+  font-weight: bold;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
 
 @media screen and (max-width: 680px) {
-  .product-card{
+  .product-card {
     width: 100%;
   }
 }
